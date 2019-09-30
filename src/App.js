@@ -1,4 +1,6 @@
 import React from 'react';
+import TodoForm from './components/TodoComponents/TodoForm';
+import Todo from './components/TodoComponents/Todo';
 
 
 const toDoData = [ // array of objects for the TODO list data
@@ -37,11 +39,11 @@ class App extends React.Component {
   toggleItem = id => {
     console.log(id); 
     this.setState({
-      list: this.state.list.map(item => {
+      list: this.state.list.map(item => { // maps through the array of objects named "toDoData"
         if (item.id === id) {
           return {
             ...item,
-            complete: !item.complete
+            completed: !item.completed
           };
         } else {
           return item;
@@ -63,17 +65,21 @@ class App extends React.Component {
 
   clearItem = () => {
     this.setState({
-      list: this.state.list.filter(item => !item.purchased)
+      list: this.state.list.filter(item => !item.completed)
     });
   };
 
   render() {
     return (
-      <div>
+    <div>
+      <div className='header-of-app'>
         <h2>Welcome to your Todo App!</h2>
+        <TodoForm addItem={this.addItem} />
+      </div>
+        <Todo completed={this.state.completed}
+        toggleItem={this.toggleItem} /> 
       </div>
     );
   }
 }
-
 export default App;
