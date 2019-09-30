@@ -1,10 +1,5 @@
 import React from 'react';
 
-class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
-  // Acts as the index.js from todays guided project
 
 const toDoData = [ // array of objects for the TODO list data
   {
@@ -25,13 +20,19 @@ const toDoData = [ // array of objects for the TODO list data
 ];
 
 class App extends React.Component {
+  // you will need a place to store your state in this component.
+  // design `App` to be the parent component of your application.
+  // this component is going to take care of state, and any change handlers you need to work with your state
+  // Acts as the index.js from todays guided project
   constructor() {
     super();
     this.state = {
-      name: "Chelsea",
+      name: 'Chelsea',
       list: toDoData
     };
   }
+
+
 
   toggleItem = id => {
     console.log(id); 
@@ -46,8 +47,8 @@ class App extends React.Component {
           return item;
         }
       })
-    })
-  }
+    });
+  };
 
   addItem = itemName => {
     const newItem = {
@@ -56,13 +57,13 @@ class App extends React.Component {
       completed: false
     };
     this.setState({
-      todo: [...this.state.todo, newItem]
+      list: [...this.state.list, newItem]
     });
   };
 
   clearItem = () => {
     this.setState({
-      todo: this.state.todo.filter(item => !item.purchased)
+      list: this.state.list.filter(item => !item.purchased)
     });
   };
 
