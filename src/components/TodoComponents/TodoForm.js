@@ -11,7 +11,7 @@ class TodoForm extends React.Component {
         };
     }
 
-    handleChange = e => {
+    handleChanges = e => {
         this.setState({
             [e.target.task]: e.target.value
         });
@@ -28,8 +28,8 @@ class TodoForm extends React.Component {
                 <input 
                 type="text"
                 value={this.item}
-                name="item"
-                onChange={this.handleChange}
+                task="item"
+                onChange={this.handleChanges}
                 />
                 <button>Add Task</button>
             </form>
